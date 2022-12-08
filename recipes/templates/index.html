@@ -15,76 +15,18 @@
         <div class="container">
             <div class="row">
                 <!-- Single Best Recipe Area -->
+                {% for key, name in name_recipes.items %}
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
                         <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
                         <div class="receipe-content">
                             <a href="{% url 'recipe' %}">
-                                <h5>Name of Recipe</h5>
+                                <h5>{{ key }} - {{ name }}</h5>
                             </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Single Best Recipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="{% url 'recipe' %}">
-                                <h5>Name of Recipe</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Recipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="{% url 'recipe' %}">
-                                <h5>name of Recipe</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Recipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="{% url 'recipe' %}">
-                                <h5>name of Recipe</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Recipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="{% url 'recipe' %}">
-                                <h5>name of Recipe</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Best Recipe Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
-                        <div class="receipe-content">
-                            <a href="{% url 'recipe' %}">
-                                <h5>name of Recipe</h5>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
