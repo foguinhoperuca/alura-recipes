@@ -1,24 +1,20 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Recipe
 
 
 def index(request):
-    # return HttpResponse('<h1>Recipes - By Alura</h1><h2>Welcome, Padwan!!</h2>')
-
     context = {
-        'name_recipes': {
-            1: 'Lasagna',
-            2: 'Vegetables Soup',
-            3: 'Ice Cream',
-            4: 'Choco Cake'
-        }
+        'recipes': Recipe.objects.all()
     }
-    # context = {
-    #     'recipes': Recipe.objects.all()
-    # }
 
     return render(request, 'index.html', context)
 
-def recipe(request):
-    return render(request, 'recipe.html')
+
+def recipe(request, recipe_id):
+    r = get_object_or_404(Recipe, pk=recipe_id)
+
+    context = {
+        'recipe': r
+    }
+
+    return render(request, 'recipe.html', context)

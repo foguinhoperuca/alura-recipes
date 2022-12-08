@@ -48,12 +48,12 @@
             <div class="row">
                 <div class="col-12 col-md-8">
                     <div class="receipe-headline my-5">
-                        <span>February, 30 - 2000</span>
-                        <h2>Name of Recipe</h2>
+                        <span>{{ recipe.date_recipe }}</span>
+                        <h2>{{ recipe.name }}</h2>
                         <div class="receipe-duration">
-                            <h6>Time: 15 minutes</h6>
-                            <h6>Serving: 2 servings</h6>
-                            <h6>Category: some-fancy-category</h6>
+                            <h6>Time: {{ recipe.preparation_time }}</h6>
+                            <h6>Serving: {{ recipe.serving }}</h6>
+                            <h6>Category: {{ recipe.category }}</h6>
                             <h6>By: Our Beloved Writer</h6>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                 <div class="col-12 col-lg-8">
                     <!-- Single Preparation Step -->
                     <div class="single-preparation-step d-flex">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+                        <p>{{ recipe.preparation }}</p>
                     </div>
                 </div>
 
@@ -72,7 +72,7 @@
                     <div class="ingredients">
                         <h4>Ingredients</h4>
                         <div class="ingredients">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+                            <p>{{ recipe.ingredients }}</p>
                         </p>
                         </div>
                     </div>

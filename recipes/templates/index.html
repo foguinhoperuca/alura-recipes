@@ -15,13 +15,13 @@
         <div class="container">
             <div class="row">
                 <!-- Single Best Recipe Area -->
-                {% for key, name in name_recipes.items %}
+                {% for recipe in recipes %}
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
                         <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
                         <div class="receipe-content">
-                            <a href="{% url 'recipe' %}">
-                                <h5>{{ key }} - {{ name }}</h5>
+                            <a href="{% url 'recipe' recipe.id %}">
+                                <h5>{{ recipe.id }} - {{ recipe.name }}</h5>
                             </a>
                         </div>
                     </div>
