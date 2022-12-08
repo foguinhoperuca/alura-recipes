@@ -1,0 +1,6 @@
+Django
+python-dotenv
+termcolor
+validate-docbr
+pytest
+pytest-cov

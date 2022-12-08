@@ -1,2 +1,3 @@
-# alura-recipes
-Curso Django Alura
+# Alura Recipes #
+
+Curso Django Alura.

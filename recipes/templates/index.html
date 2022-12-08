@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="{% static 'img/core-img/pizza.png' %}" alt="">
+    </div>
+
+    {% include 'partials/search.html' %}
+
+    {% include 'partials/menu.html' %}
+
+    <!-- ##### Best Recipe Area Start ##### -->
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                <!-- Single Best Recipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                        <div class="receipe-content">
+                            <a href="{% url 'recipe' %}">
+                                <h5>Name of Recipe</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Best Recipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                        <div class="receipe-content">
+                            <a href="{% url 'recipe' %}">
+                                <h5>Name of Recipe</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Best Recipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                        <div class="receipe-content">
+                            <a href="{% url 'recipe' %}">
+                                <h5>name of Recipe</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Best Recipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                        <div class="receipe-content">
+                            <a href="{% url 'recipe' %}">
+                                <h5>name of Recipe</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Best Recipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                        <div class="receipe-content">
+                            <a href="{% url 'recipe' %}">
+                                <h5>name of Recipe</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Best Recipe Area -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                        <div class="receipe-content">
+                            <a href="{% url 'recipe' %}">
+                                <h5>name of Recipe</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Best Recipe Area End ##### -->
+
+    {% include 'partials/footer.html' %}
+
+{% endblock %}
