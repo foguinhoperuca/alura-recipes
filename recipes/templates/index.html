@@ -18,7 +18,11 @@
                 {% for recipe in recipes %}
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-best-receipe-area mb-30">
-                        <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                        {% if recipe.photo == '' %}
+                            <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                        {% else %}
+                            <img src="{{ recipe.photo.url }}" alt="">
+                        {% endif %}
                         <div class="receipe-content">
                             <a href="{% url 'recipe' recipe.id %}">
                                 <h5>{{ recipe.id }} - {{ recipe.name }}</h5>

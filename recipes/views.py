@@ -4,7 +4,7 @@ from .models import Recipe
 
 def index(request):
     context = {
-        'recipes': Recipe.objects.all()
+        'recipes': Recipe.objects.filter(publicated=True).order_by('-date_recipe')
     }
 
     return render(request, 'index.html', context)

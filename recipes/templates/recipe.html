@@ -36,7 +36,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="receipe-slider owl-carousel">
-                    <img src="{% static 'img/bg-img/tomato_banner.jpg' %}">
+                    {% if recipe.photo == '' %}
+                        <img src="{% static 'img/bg-img/tomato_banner.jpg' %}">
+                    {% else %}
+                        <img src="{{ recipe.photo.url }}">
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -54,7 +58,7 @@
                             <h6>Time: {{ recipe.preparation_time }}</h6>
                             <h6>Serving: {{ recipe.serving }}</h6>
                             <h6>Category: {{ recipe.category }}</h6>
-                            <h6>By: Our Beloved Writer</h6>
+                            <h6>By: {{ recipe.person }}</h6>
                         </div>
                     </div>
                 </div>

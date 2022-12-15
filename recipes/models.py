@@ -1,8 +1,13 @@
 from django.db import models
 from datetime import datetime
 
+from django.db.models import BooleanField
+
+from persons.models import Person
+
 
 class Recipe(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     ingredients = models.TextField()
     preparation = models.TextField()
@@ -10,3 +15,5 @@ class Recipe(models.Model):
     serving = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
     date_recipe = models.DateTimeField(default=datetime.now, blank=True)
+    publicated = models.BooleanField(default=False)
+    photo = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
