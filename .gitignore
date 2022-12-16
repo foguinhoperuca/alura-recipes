@@ -133,3 +133,4 @@ dmypy.json
 *~*
 logs/*
 .DS_store
+media/

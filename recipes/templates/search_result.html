@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="{% static 'img/core-img/pizza.png' %}" alt="">
+    </div>
+
+    {% include 'partials/_search.html' %}
+
+    {% include 'partials/_menu.html' %}
+
+    <!-- ##### Best Recipe Area Start ##### -->
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                <!-- Single Best Recipe Area -->
+                {% if recipes %}
+                    {% for recipe in recipes %}
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-best-receipe-area mb-30">
+                            {% if recipe.photo == '' %}
+                                <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                            {% else %}
+                                <img src="{{ recipe.photo.url }}" alt="">
+                            {% endif %}
+                            <div class="receipe-content">
+                                <a href="{% url 'recipe' recipe.id %}">
+                                    <h5>{{ recipe.id }} - {{ recipe.name }}</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <p>
+                            Recipes not found!
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- ##### Best Recipe Area End ##### -->
+
+    {% include 'partials/_footer.html' %}
+
+{% endblock %}

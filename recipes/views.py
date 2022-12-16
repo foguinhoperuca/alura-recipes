@@ -18,3 +18,21 @@ def recipe(request, recipe_id):
     }
 
     return render(request, 'recipe.html', context)
+
+
+def search(request):
+    # return render(request, 'search_result.html')
+
+    recipes = Recipe.objects.filter(publicated=True).order_by('-date_recipe')
+    if 'search' in request.GET:
+        query = request.GET['search']
+        # TODO how to logging?!
+        print(f"{query = }")
+        if query:
+            recipes = Recipe.objects.filter(name__icontains=f"{query}")
+
+    context = {
+        'recipes': recipes
+    }
+
+    return render(request, 'search_result.html', context)

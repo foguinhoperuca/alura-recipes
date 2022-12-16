@@ -6,9 +6,9 @@
         <img src="{% static 'img/core-img/pizza.png' %}" alt="">
     </div>
 
-    {% include 'partials/search.html' %}
+    {% include 'partials/_search.html' %}
 
-    {% include 'partials/menu.html' %}
+    {% include 'partials/_menu.html' %}
 
     <!-- ##### Best Recipe Area Start ##### -->
     <section class="best-receipe-area">
@@ -21,7 +21,7 @@
                         {% if recipe.photo == '' %}
                             <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
                         {% else %}
-                            <img src="{{ recipe.photo.url }}" alt="">
+                            <img src="{{ recipe.photo.url }}" alt="" width="150" height="150">
                         {% endif %}
                         <div class="receipe-content">
                             <a href="{% url 'recipe' recipe.id %}">
@@ -36,6 +36,6 @@
     </section>
     <!-- ##### Best Recipe Area End ##### -->
 
-    {% include 'partials/footer.html' %}
+    {% include 'partials/_footer.html' %}
 
 {% endblock %}

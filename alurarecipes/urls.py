@@ -18,7 +18,6 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 # from recipes import views, urls
-# import recipes
 
 urlpatterns = [
     path('recipes/', include('recipes.urls')),
