@@ -8,27 +8,34 @@ from recipes.models import Recipe
 
 def register(request):
     if request.method == 'POST':
-        print(f'User was created successfully!! {request.POST["name"] = } {request.POST["email"] = }'
+        print(f'User data: {request.POST["name"] = } {request.POST["email"] = }'
               f' {request.POST["password"] = } {request.POST["password2"] = }')
 
-        if not request.POST["name"].strip():
+        if empty_field(request.POST["name"]):
             print(colored("Name can't be blank!!", 'yellow', attrs=['bold']))
 
             return redirect('register')
 
-        if not request.POST["email"].strip():
+        if empty_field(request.POST["email"]):
             print(colored("E-mail can't be blank!!", 'yellow', attrs=['bold']))
 
             return redirect('register')
 
-        if request.POST["password"] != request.POST["password2"]:
+        if password_doesnt_match(request.POST["password"], request.POST["password2"]):
             print(colored("Passwords must match!!", 'yellow', attrs=['bold']))
             messages.error(request, "Passwords must match!!")
 
             return redirect('register')
 
         if User.objects.filter(email=request.POST["email"]).exists():
-            print(colored("User already registered!!", 'yellow', attrs=['bold']))
+            print(colored("User EMAIL already registered!!", 'yellow', attrs=['bold']))
+            messages.error(request, "User EMAIL already registered!!")
+
+            return redirect('register')
+
+        if User.objects.filter(username=request.POST["name"]).exists():
+            print(colored("User USERNAME already registered!!", 'yellow', attrs=['bold']))
+            messages.error(request, "User USERNAME already registered!!")
 
             return redirect('register')
 
@@ -59,8 +66,10 @@ def dashboard(request):
 def login(request):
     if request.method == 'POST':
         print(colored(f"{request.POST['email'] = } {request.POST['password'] = }", 'green', attrs=['bold']))
-        if request.POST["email"] == "" or request.POST["password"] == "":
-            print(colored("E-mail and password can't be blank!!", 'yellow', attrs=['bold']))
+        if empty_field(request.POST["email"]) or empty_field(request.POST["password"]):
+            print(colored("E-mail or password can't be blank!!", 'yellow', attrs=['bold']))
+            messages.error(request, "E-mail or password can't be blank!!")
+
             return redirect('login')
 
         if User.objects.filter(email=request.POST["email"]).exists():
@@ -73,7 +82,6 @@ def login(request):
                 print(colored(f'Login was done successfully!! {user.password = }', 'green', attrs=['bold']))
                 messages.success(request, "Login was done successfully!!")
                 return redirect('dashboard')
-
 
         return redirect('login')
 
