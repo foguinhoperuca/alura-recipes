@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Preloader -->
+    <div id="preloader">
+       <i class="circle-preloader"></i>
+       <img src="{% static 'img/core-img/pizza.png' %}" alt="">
+    </div>
+
+    {% include 'partials/_search.html' %}
+    {% include 'partials/_menu.html' %}
+    {% include 'partials/_alerts.html' %}
+
+    <!-- ##### Contact Form Area Start ##### -->
+    <div class="contact-area section-padding-0-80">
+       <div class="container">
+           <div class="row">
+               <div class="col-12">
+                   <div class="section-heading">
+                       <h3>Create your recipe, {{ user.username }} :)</h3>
+                   </div>
+               </div>
+           </div>
+
+           <div class="row">
+               <div class="col-12">
+               <p>All field are mandatory!!</p>
+                   <div class="contact-form-area">
+                       <form action="{% url 'create_recipe' %}" method="post" enctype="multipart/form-data">
+                           {% csrf_token %}
+                           <div class="row">
+                               <div class="col-12 col-lg-12">
+                                   <label for="name_recipe"><b>Name</b></label>
+                                   <input type="text" id="name_recipe" class="form-control" name="name_recipe" placeholder="Ex. Lemon Juice" required>
+                               </div>
+                               <div class="col-12">
+                                   <label for="ingredients"><b>Ingredients</b></label>
+                                   <textarea class="form-control" id="ingredients" name="ingredients" cols="30" rows="10" placeholder="Eg. 2 lemons &#10;200ml of water" required></textarea>
+                               </div>
+                               <div class="col-12">
+                                   <label for="preparation"><b>Preparation</b></label>
+                                   <textarea class="form-control" id="preparation" name="preparation" cols="30" rows="10" placeholder="Eg. Slice the lemon with care and squish in your glass &#10;Put some water and you're done." required></textarea>
+                               </div>
+                               <div class="col-12 col-lg-3">
+                                   <label for="preparation_time"><b>Preparation Time (minutes)</b></label>
+                                   <input type="number" class="form-control" id="preparation_time" name="preparation_time" placeholder="Eg. 2" required>
+                               </div>
+                               <div class="col-12 col-lg-3">
+                                   <label for="serving"><b>Serving</b></label>
+                                   <input type="text" class="form-control" id="serving" name="serving" placeholder="Eg. 01 person." required>
+                               </div>
+                               <div class="col-12 col-lg-3">
+                                   <label for="category"><b>Category</b></label>
+                                   <input type="text" class="form-control" id="category" name="category" placeholder="Eg. cold drinks" required>
+                               </div>
+                               <div class="col-12 col-lg-3">
+                                   <label for="photo"><b>Photo</b></label>
+                                   <input type="file" class="form-control" id="photo" name="photo" required>
+                               </div>
+                               <div class="col-12 text-center">
+                                   <button class="btn delicious-btn mt-30" type="submit">Create your recipe!!</button>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+
+    {% include 'partials/_footer.html' %}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="img/core-img/hamburger.png" alt="">
+    </div>
+
+    {% include 'partials/_search.html' %}
+    {% include 'partials/_menu.html' %}
+    {% include 'partials/_alerts.html' %}
+
+    <div class="contact-area section-padding-0-80">
+       <div class="container">
+           <div class="row">
+               <div class="col-12">
+                   <div class="section-heading">
+                       <h3>Hello {{ user.username }}!!</h3>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+
+    <!-- ##### Best Recipe Area Start ##### -->
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                <!-- Single Best Recipe Area -->
+                {% for recipe in recipes %}
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="single-best-receipe-area mb-30">
+                        {% if recipe.photo == '' %}
+                            <img src="{% static 'img/bg-img/photo_recipe.png' %}" alt="">
+                        {% else %}
+                            <img src="{{ recipe.photo.url }}" alt="" width="150" height="150">
+                        {% endif %}
+                        <div class="receipe-content">
+                            <a href="{% url 'recipe' recipe.id %}">
+                                <h5>{{ recipe.id }} - {{ recipe.name }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- ##### Best Recipe Area End ##### -->
+
+    {% include 'partials/_footer.html' %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

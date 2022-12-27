@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,8 @@ SECRET_KEY = 'django-insecure-dmaq^x^gi+=lgp-2h7b=*7uj+oq5gc#a(3^3oj7v*)ra4tbw^m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# FIXME for dev only with 2 pcs
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -34,6 +37,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'recipes',
     'persons',
+    'recipe_users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +61,8 @@ ROOT_URLCONF = 'alurarecipes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'recipes/templates')],
+        # 'DIRS': [os.path.join(BASE_DIR, 'recipes/templates'), os.path.join(BASE_DIR, 'recipe_users/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -141,3 +146,8 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success'
+}
