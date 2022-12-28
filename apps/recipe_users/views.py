@@ -1,12 +1,13 @@
-import datetime
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from termcolor import colored
-from recipes.models import Recipe
+# from recipes.models import Recipe
+from apps.recipes.models import Recipe
 
 
 def register(request):
+    """Register a new person in system"""
     if request.method == 'POST':
         print(f'User data: {request.POST["name"] = } {request.POST["email"] = }'
               f' {request.POST["password"] = } {request.POST["password2"] = }')
@@ -51,6 +52,7 @@ def register(request):
 
 
 def dashboard(request):
+    """Show all recipes from a logged user"""
     if request.user.is_authenticated:
         recipes = Recipe.objects.order_by('-date_recipe').filter(person=request.user.id)
 
@@ -64,6 +66,7 @@ def dashboard(request):
 
 
 def login(request):
+    """Do login in site"""
     if request.method == 'POST':
         print(colored(f"{request.POST['email'] = } {request.POST['password'] = }", 'green', attrs=['bold']))
         if empty_field(request.POST["email"]) or empty_field(request.POST["password"]):
@@ -89,41 +92,19 @@ def login(request):
 
 
 def logout(request):
+    """Do logout in site"""
     auth.logout(request)
     messages.success(request, "Logout was done successfully!!")
     print(colored("Logout was done successfully!!", 'green', attrs=['bold']))
-    # return render(request, 'recipe_users/logout.html')
+
     return redirect('index')
 
 
-def create_recipe(request):
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-            user = get_object_or_404(User, pk=request.user.id)
-            print(colored(f'Create Recipe!! {request.POST["name_recipe"] = } {request.POST["ingredients"] = } '
-                          f'{request.POST["preparation"] = } {request.POST["preparation_time"] = } '
-                          f'{request.POST["serving"] = } {request.POST["category"] = } {request.FILES["photo"] = }'
-                          f'{user = }',
-                          'green', attrs=['bold']))
-
-            recipe = Recipe.objects.create(person=user, name=request.POST["name_recipe"],
-                                           ingredients=request.POST["ingredients"],
-                                           preparation=request.POST["preparation"],
-                                           preparation_time=request.POST["preparation_time"],
-                                           serving=request.POST["serving"], category=request.POST["category"],
-                                           photo=request.FILES["photo"])
-            recipe.save()
-
-            return redirect('dashboard')
-
-        return render(request, 'recipe_users/create_recipe.html')
-    else:
-        return redirect('index')
-
-
 def empty_field(field):
+    """Helper to validate empty fields"""
     return not field.strip()
 
 
 def password_doesnt_match(password, password2):
+    """Helper to validate passwords"""
     return password != password2

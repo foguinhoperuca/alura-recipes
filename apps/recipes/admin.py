@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Recipe
+from apps.recipes.models import Recipe
+# from recipes.models import Recipe
 
 
 # Register your models here.

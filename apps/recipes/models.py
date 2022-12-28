@@ -3,11 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-from django.db.models import BooleanField
-
-from persons.models import Person
-
-
 class Recipe(models.Model):
     # person = models.ForeignKey(Person, on_delete=models.CASCADE)
     person = models.ForeignKey(User, on_delete=models.CASCADE)

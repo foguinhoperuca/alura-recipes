@@ -1,5 +1,5 @@
 {% load static %}
-"<!-- ##### Header Area Start ##### -->
+<!-- ##### Header Area Start ##### -->
 <header class="header-area">
     <!-- Top Header Area -->
     <div class="top-header-area">
@@ -57,10 +57,12 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul><li><a href="{% url 'index' %}">Home</a></li></ul>
-
                             {% if user.is_authenticated %}
                                 <ul><li><a href="{% url 'dashboard' %}">My Recipes</a></li></ul>
                                 <ul><li><a href="{% url 'create_recipe' %}">Create Recipe</a></li></ul>
+                                {% if user.is_superuser %}
+                                <ul><li><a href="{% url 'admin:index' %}">Admin Area</a></li></ul>
+                                {% endif %}
                                 <ul><li><a href="{% url 'logout' %}">Logout</a></li></ul>
                             {% else %}
                                 <ul><li><a href="{% url 'register' %}">Register</a></li></ul>

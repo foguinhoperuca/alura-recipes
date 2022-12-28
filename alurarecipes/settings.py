@@ -12,12 +12,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 from django.contrib.messages import constants as messages
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -35,9 +34,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'recipes',
-    'persons',
-    'recipe_users',
+    'apps.persons',
+    'apps.recipe_users',
+    'apps.recipes', # note apps.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -149,5 +148,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
-    messages.SUCCESS: 'success'
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.INFO: 'info'
 }
+
+PROJECT_ROOT = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(PROJECT_ROOT, '../apps'))

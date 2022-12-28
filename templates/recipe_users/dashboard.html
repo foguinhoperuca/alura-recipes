@@ -40,6 +40,8 @@
                             <a href="{% url 'recipe' recipe.id %}">
                                 <h5>{{ recipe.id }} - {{ recipe.name }}</h5>
                             </a>
+                            <a href="{% url 'edit_recipe' recipe.id %}" type="button" class="btn btn-info">Edit</a>
+                            <a href="{% url 'delete_recipe' recipe.id %}" type="button" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>
